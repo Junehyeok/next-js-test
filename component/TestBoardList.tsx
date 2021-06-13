@@ -6,7 +6,7 @@ import {BoardType} from "../type/board";
 
 const TestBoardList: React.FC = () => {
     const list = listBoard();
-
+    console.log("+adslfkafdlkjfdlsk+ " + list);
     const [posts, setPosts] = useState([]);
     const arr = [];
 
@@ -14,12 +14,14 @@ const TestBoardList: React.FC = () => {
     return (
         <>
             <table>
-                <tr>
-                    <th>글번호</th>
-                    <th>제목</th>
-                    <th>작성자</th>
-                </tr>
-
+                <thead>
+                    <tr>
+                        <th>글번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
             </table>
 
             <br/><br/><br/><br/><br/>

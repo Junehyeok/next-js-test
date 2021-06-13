@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { selectBoard } from "../lib/board";
@@ -6,13 +6,20 @@ import { selectBoard } from "../lib/board";
 const TestBoardView: React.FC = () => {
     const router = useRouter();
 
-    const { id } = router.query;
+    useEffect(()=>{
+        if(!router.isReady) return;
+        // codes using router.query
+    }, [router.isReady]);
 
-    console.log("=-==========================")
-    console.log(id)
+    const id = router.query.view;
+
 
     const a = selectBoard(id);
-
+    console.log("=-==========================")
+    console.log("=-==========================")
+    console.log(router.isReady)
+    console.log(router.query.view)
+    console.log("=-==========================")
     console.log(a);
 
 
@@ -39,4 +46,15 @@ const TestBoardView: React.FC = () => {
     )
 }
 
+export async function getServerSideProps(ctx) {
+    const { id } = ctx.query;
+    console.log("jsakdljdsklfasdjkflsajklsjdklasdjlk" + id);
+    return {
+        props: {
+            id,
+        },
+    };
+}
 export default TestBoardView;
+
+
