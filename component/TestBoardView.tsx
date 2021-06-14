@@ -4,22 +4,25 @@ import { useRouter } from "next/router";
 import { selectBoard } from "../lib/board";
 
 const TestBoardView: React.FC = () => {
+
+    const [ids, setIds] = useState(1);
+
     const router = useRouter();
 
     useEffect(()=>{
         if(!router.isReady) return;
         // codes using router.query
+        setIds(Number(router.query.view));
     }, [router.isReady]);
 
     const id = router.query.view;
 
 
-    const a = selectBoard(id);
-    console.log("=-==========================")
-    console.log("=-==========================")
-    console.log(router.isReady)
+    const a = selectBoard(Number(ids));
+
+
     console.log(router.query.view)
-    console.log("=-==========================")
+
     console.log(a);
 
 
@@ -44,16 +47,6 @@ const TestBoardView: React.FC = () => {
             </Link>
         </>
     )
-}
-
-export async function getServerSideProps(ctx) {
-    const { id } = ctx.query;
-    console.log("jsakdljdsklfasdjkflsajklsjdklasdjlk" + id);
-    return {
-        props: {
-            id,
-        },
-    };
 }
 export default TestBoardView;
 

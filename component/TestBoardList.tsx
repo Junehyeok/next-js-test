@@ -4,13 +4,11 @@ import { listBoard } from "../lib/board";
 import axios from "../lib/index";
 import {BoardType} from "../type/board";
 
-const TestBoardList: React.FC = () => {
-    const list = listBoard();
-    console.log("+adslfkafdlkjfdlsk+ " + list);
-    const [posts, setPosts] = useState([]);
-    const arr = [];
+interface IProps {
+    posts: BoardType[];
+}
 
-
+const TestBoardList: React.FC<IProps> = ({ posts }) => {
     return (
         <>
             <table>
@@ -21,7 +19,15 @@ const TestBoardList: React.FC = () => {
                         <th>작성자</th>
                     </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody>
+                {posts.map((post) => (
+                    <tr>
+                        <td>{post.id}</td>
+                        <td>{post.title}</td>
+                        <td>{post.author}</td>
+                    </tr>
+                ))}
+                </tbody>
             </table>
 
             <br/><br/><br/><br/><br/>

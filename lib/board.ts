@@ -7,20 +7,14 @@ interface AddBoard {
     author: string
 }
 
-interface UpdateBoard {
-    ids: number;
-    title: string
-    content: string
-    author: string
-}
 
 export const insertBoard = (body : AddBoard) => axios.post("/api/v1/posts", body);
 
 export const updateBoard = (body : AddBoard, id: number) => axios.put(`/api/v1/posts/${id}`, body);
 
-export const selectBoard = async (id: string) => {
+export const selectBoard = async (id: number) => {
     console.log("id >>> " + id);
-    await axios.get<BoardType>(`/api/v1/posts/${id}`);
+    await axios.get(`/api/v1/posts/${id}`);
 }
 
 export const listBoard = async () => {

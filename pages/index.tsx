@@ -1,6 +1,7 @@
+import { NextPage } from "next";
 import Link from "next/link";
 
-export default function Home() {
+const index: NextPage = () => {
     return (
         <div>
             게시판 <br/>
@@ -17,3 +18,5 @@ export default function Home() {
     )
 }
 
+
+export default index;
